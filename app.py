@@ -283,9 +283,6 @@ def generate_ai_insights(
     return insights
 
 
-# ------------------------------
-# Cleaning actions
-# ------------------------------
 def remove_duplicates(df: pd.DataFrame) -> Tuple[pd.DataFrame, int]:
     before = len(df)
     cleaned = df.drop_duplicates().copy()
@@ -474,7 +471,6 @@ def main():
     upload_col2.metric("Columns", f"{current_df.shape[1]}")
     upload_col3.metric("Quality Score", f"{quality_score}/10")
 
-    # Overview
     st.header("Overview")
     overview_col1, overview_col2 = st.columns([1, 2])
 
@@ -532,7 +528,6 @@ def main():
         for insight in insights:
             st.write(f"- {insight}")
 
-    # Visualization
     st.header("Visualization")
     vis_tab1, vis_tab2, vis_tab3 = st.tabs(
         ["Missing Values Heatmap", "Distribution Plots", "Correlation Heatmap"]
